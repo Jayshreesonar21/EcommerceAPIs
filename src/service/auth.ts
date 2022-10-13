@@ -16,11 +16,11 @@ export class AuthService {
 
       const users = await User.findOne({ where: { email: email, isDeleted: false } });
       if (!users) {
-        throw new NotFoundError('404', 'Not Found');
+        return res.status(404).json({ message: 'Not Found', status: 404 });
       } else {
         const passwordMatched = bcrypt.compareSync(password, users.password);
         if (!passwordMatched) {
-          throw new AuthFailureError('401', 'Unauthorized');
+          return res.status(422).json({ message: 'Wrong email or password', status: 422 });
         } else {
           const token = jwt.sign({ id: users.id, role: users.role }, environmentConfig.JWT_SECRET);
           const data = {

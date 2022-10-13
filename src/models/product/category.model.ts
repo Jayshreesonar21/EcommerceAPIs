@@ -2,6 +2,8 @@ import { DataTypes, Model } from 'sequelize';
 import { sequelize } from '..';
 
 import { CategoryInstance, CategoryCreationAttributes } from '../../interface';
+import Product from './product.model';
+import ProductCategory from './product_category.model';
 
 class Category extends Model<CategoryInstance, CategoryCreationAttributes> implements CategoryInstance {
   id!: number;
@@ -37,5 +39,17 @@ Category.init(
     },
   },
 );
+
+Category.belongsToMany(Product, {
+  through: ProductCategory,
+  foreignKey: 'categoryId',
+  otherKey: 'productId',
+});
+
+Product.belongsToMany(Category, {
+  through: ProductCategory,
+  foreignKey: 'productId',
+  otherKey: 'categoryId',
+});
 
 export default Category;

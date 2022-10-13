@@ -17,13 +17,13 @@ export const create = {
 
 export const show = {
   params: Joi.object({
-    id: Joi.number().required(),
+    id: Joi.number().integer().required(),
   }),
 };
 
 export const update = {
   params: Joi.object({
-    id: Joi.number().required(),
+    id: Joi.number().integer().required(),
   }),
   body: Joi.object({
     firstName: Joi.string().optional().trim(),
@@ -39,7 +39,7 @@ export const update = {
 
 export const destroy = {
   params: Joi.object({
-    id: Joi.number().required(),
+    id: Joi.number().integer().required(),
   }),
 };
 

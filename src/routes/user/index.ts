@@ -1,12 +1,12 @@
 import { Router, Request, Response } from 'express';
+import { celebrate } from 'celebrate';
+
 const router = Router({ mergeParams: true });
 
 import address from './address.routes';
 import { UserRepository } from '../../repositories';
 import { verifyUser, isAuth } from '../../middleware';
 import { show, update, isExists } from '../../validation/user.validate';
-
-import { celebrate } from 'celebrate';
 
 router.use('/address', address);
 router.get('/list', verifyUser, isAuth(['admin']), UserRepository.all);

@@ -6,7 +6,7 @@ import User from '../models/user/user.model';
 
 export const show = {
   params: Joi.object({
-    id: Joi.number().optional(),
+    id: Joi.number().integer().optional(),
   }),
 };
 
