@@ -15,6 +15,9 @@ export const create = {
     description: Joi.string().required(),
     price: Joi.number().required(),
     stock: Joi.number().integer().min(1).required(),
+    tagIds: Joi.array().unique().items(Joi.number().integer().required()).min(1).required(),
+    categoryIds: Joi.array().unique().items(Joi.number().integer().required()).min(1).required(),
+    attributeValueIds: Joi.array().unique().items(Joi.number().integer().required()).min(1).required(),
   },
 };
 

@@ -52,4 +52,7 @@ Product.belongsToMany(Tag, {
   otherKey: 'tagId',
 });
 
+ProductTag.belongsTo(Product, { foreignKey: 'productId' });
+ProductTag.belongsTo(Tag, { foreignKey: 'tagId' });
+
 export default Tag;

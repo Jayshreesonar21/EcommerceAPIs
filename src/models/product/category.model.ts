@@ -52,4 +52,7 @@ Product.belongsToMany(Category, {
   otherKey: 'categoryId',
 });
 
+ProductCategory.belongsTo(Product, { foreignKey: 'productId' });
+ProductCategory.belongsTo(Category, { foreignKey: 'categoryId' });
+
 export default Category;

@@ -9,6 +9,7 @@ import comment from './comment.routes';
 import { verifyUser, isAuth } from '../../middleware';
 import { ProductRepository } from '../../repositories';
 import { show, create, isExists } from '../../validation/product.validate';
+import { Multer } from '../../utils/multer.util';
 
 const router = Router();
 

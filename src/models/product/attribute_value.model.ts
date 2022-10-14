@@ -54,5 +54,7 @@ Product.belongsToMany(AttributeValue, {
   foreignKey: 'productId',
   otherKey: 'attributeValueId',
 });
+ProductAttributeValue.belongsTo(Product, { foreignKey: 'productId' });
+ProductAttributeValue.belongsTo(AttributeValue, { foreignKey: 'attributeValueId' });
 
 export default AttributeValue;

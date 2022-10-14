@@ -1,7 +1,7 @@
 import { Router, Request, Response, NextFunction } from 'express';
 
 import Attribute from '../models/product/attribute.model';
-import AttributeValue from '../models/product/attributeValue.model';
+import AttributeValue from '../models/product/attribute_value.model';
 
 import { SuccessResponse } from '../utils/successResponse.handler';
 

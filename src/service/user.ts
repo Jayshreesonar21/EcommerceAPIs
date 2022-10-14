@@ -3,6 +3,8 @@ import { Router, Request, Response, NextFunction } from 'express';
 import { MyUserRequest } from '../interface';
 import User from '../models/user/user.model';
 import Address from '../models/user/address.model';
+import Product from '../models/product/product.model';
+import Comment from '../models/product/comment.model';
 
 import { SuccessResponse } from '../utils/successResponse.handler';
 
@@ -12,7 +14,7 @@ export class UserService {
       const users = await User.findAll({
         where: { role: 'user', isDeleted: false },
         attributes: ['id', 'firstName', 'lastName', 'email', 'role', 'createdAt'],
-        include: [{ model: Address }],
+        include: [{ model: Address }, { model: Comment, include: [Product] }],
       });
 
       return res.status(200).json(new SuccessResponse(true, '', 200, users));
